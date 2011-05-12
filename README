@@ -1,0 +1,37 @@
+GetFeed
+-------
+Fetch facebook page posts or twitter user feed easily.
+
+
+
+	Facebook feed
+	  options:
+	      - limit:    Specifies the number of posts to retrieve.
+	
+	      - since:    Returns posts that were created after this (pass Time object)
+	
+	      - until:    Returns posts that were created before this (pass Time object)
+	  usage: 
+	    GetFeed::Facebook.new("cocacola", {:limit => 10,:since => Time.local(2011,4,1),:until => Time.local(2011,4,12)}).response
+
+
+
+	Twitter feeds
+	  options:
+	      - count:    Specifies the number of Tweets to try and retrieve. 
+	                  Must be less than or equal to 200. The value you pass 
+	                  as count is a maximum number of Tweets to return. 
+	                  The actual number of Tweets you receive maybe less than 
+	                  count due to the removal of content from suspended or 
+	                  deleted users.
+	
+	      - since_id: Returns results with an ID greater than (that is, more 
+	                  recent than) the specified ID. There are limits to the 
+	                  number of Tweets which can be accessed through the API. 
+	                  If the limit of Tweets has occured since the since_id, 
+	                  the since_id will be forced to the oldest ID available.
+	
+	      - max_id:   Returns results with an ID less than (that is, older than) 
+	                  or equal to the specified ID.
+	  usage:
+	      GetFeed::Twitter.new("BARACKOBAMA", {:count => 2}).response
